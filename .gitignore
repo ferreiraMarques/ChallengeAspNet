@@ -1,4 +1,6 @@
 tutorialAsp.sln
+bin/Debug
+obj/Debug
 
 /node_modules
 
