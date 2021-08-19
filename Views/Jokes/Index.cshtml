@@ -8,39 +8,51 @@
     ViewData["Title"] = "Jokes Index";
 }
 
-<div class="wrapper">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <p>
-            <a class="btn btn-primary" asp-controller="Jokes" asp-action="Create">Create New Joke</a>
-        </p>
-    }
-    <table class="table">
-        <thead>
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>
+        <a class="btn btn-primary" asp-controller="Jokes" asp-action="Create"
+            data-bs-toggle="tooltip" data-bs-placement="top" title="Create new Joke">
+            <i class="bi bi-plus"></i>
+        </a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Questions)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Questions)
-                </th>
-                <th></th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Questions)
+                </td>
+                
+                <td class="options">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a class="btn btn-warning" asp-controller="Jokes" asp-action="Edit" asp-route-id="@item.Id"
+                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Joke">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a class="btn btn-danger" asp-controller="Jokes" asp-action="Delete" asp-route-id="@item.Id"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Joke">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    }
+                    <a class="btn btn-secondary" asp-controller="Jokes" asp-action="Details" asp-route-id="@item.Id"
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Show Joke">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Questions)
-                    </td>
-                    <td class="options">
-                        @if (SignInManager.IsSignedIn(User))
-                        {
-                            <a class="btn btn-warning" asp-controller="Jokes" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                            <a class="btn btn-danger" asp-controller="Jokes" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        }
-                        <a class="btn btn-secondary" asp-controller="Jokes" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+        }
+    </tbody>
+</table>

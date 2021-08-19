@@ -4,27 +4,24 @@
     ViewData["Title"] = "Search";
 }
 
-<div class="wrapper">
-    <h4>Search Joke</h4>
+<h4>Search Joke</h4>
 
-    <hr />
+<hr />
 
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="SearchResults">
-                <div class="form-group">
-                    <label for="SearchPhrase" class="control-label"></label>
-                    <input name="SearchPhrase" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Search" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SearchResults">
+            <div class="input-group mb-3">
+                <input name="SearchPhrase" type="text" class="form-control" placeholder="Search jokes" >
+                <button class="btn btn-primary text-light" type="submit" 
+                    data-bs-toggle="tooltip" data-bs-placement="top" title="Search Joke">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </form>
     </div>
+</div>
 
-    <div>
-        <a class="btn btn-secondary" asp-action="Index">Back to List</a>
-    </div>
-
+<div>
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
 </div>

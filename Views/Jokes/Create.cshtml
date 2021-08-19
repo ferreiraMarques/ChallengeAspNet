@@ -4,39 +4,35 @@
     ViewData["Title"] = "Create";
 }
 
-<div class="wrapper">
+<h1>Create new Joke</h1>
 
-    <h1>Create</h1>
+<hr />
 
-    <hr />
-
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Questions" class="control-label"></label>
-                    <input asp-for="Questions" class="form-control" />
-                    <span asp-validation-for="Questions" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Answer" class="control-label"></label>
-                    <input asp-for="Answer" class="form-control" />
-                    <span asp-validation-for="Answer" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Questions" class="control-label"></label>
+                <input asp-for="Questions" class="form-control" />
+                <span asp-validation-for="Questions" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Answer" class="control-label"></label>
+                <input asp-for="Answer" class="form-control" />
+                <span asp-validation-for="Answer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary btn-max" />
+            </div>
+        </form>
     </div>
-
-    <div>
-        <a class="btn btn-secondary" asp-action="Index">Back to List</a>
-    </div>
-
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
-
 </div>
+
+<div>
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
